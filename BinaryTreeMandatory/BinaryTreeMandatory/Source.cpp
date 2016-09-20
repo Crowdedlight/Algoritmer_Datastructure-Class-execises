@@ -17,10 +17,14 @@ int main()
 	
 	//Make a binary search tree
 	BinarySearchTree bst = BinarySearchTree();
+	AvlTree avl = AvlTree();
 
 	//Add values
 	for (int i = 0; i < 15; i++)
+	{
 		bst.insert(i);
+		avl.insert(i);
+	}
 
 	system("pause");
 
@@ -28,7 +32,8 @@ int main()
 	cout << "======= PRINTING TREE =======" << endl;
 	cout << "=============================" << endl;
 
-	bst.printTree();
+	//bst.printTree();
+	avl.printTree();
 	cout << endl;
 
 	system("pause");
@@ -43,7 +48,9 @@ int main()
 	time_point<Clock> start = Clock::now();
 
 	//Run function
-	cout << bst.numNodes() << endl;
+	//cout << bst.numNodes() << endl;
+	cout << avl.numNodes() << endl;
+
 
 	// Stop Clock
 	time_point<Clock> end = Clock::now();
@@ -64,7 +71,9 @@ int main()
 	start = Clock::now();
 
 	//Running function
-	cout << bst.numLeaves() << endl;
+	//cout << bst.numLeaves() << endl;
+	cout << avl.numLeaves() << endl;
+
 	
 	// Stop Clock
 	end = Clock::now();
@@ -87,7 +96,8 @@ int main()
 	start = Clock::now();
 
 	//Running function
-	cout << bst.numFullNodes() << endl;
+	//cout << bst.numFullNodes() << endl;
+	cout << avl.numFullNodes() << endl;
 
 	// Stop Clock
 	end = Clock::now();

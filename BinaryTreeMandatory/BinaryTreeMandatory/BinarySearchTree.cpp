@@ -215,8 +215,6 @@ int BinarySearchTree::numLeaves(BinaryNode* t, int * num)
 
 	if (t != nullptr)
 	{
-		int debug = t->element;
-
 		//if both left and right is null, node is a leave
 		if (t->left == nullptr && t->right == nullptr)
 		{
@@ -244,8 +242,6 @@ int BinarySearchTree::numFullNodes(BinaryNode* t, int * num)
 
 	if (t != nullptr)
 	{
-		int debug = t->element;
-
 		//if both left and right is not null, node is a full-Node
 		if (t->left != nullptr && t->right != nullptr)
 		{

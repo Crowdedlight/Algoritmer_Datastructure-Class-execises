@@ -37,7 +37,11 @@ public:
 	void insert(const int& x);
 	void insert(int&& x);
 	void remove(const int& x);
-	
+
+	int numNodes();
+	int numLeaves();
+	int numFullNodes();
+
 private:
 	
 	AvlNode *root;
@@ -45,7 +49,11 @@ private:
 	void insert(const int& x, AvlNode * & t);
 	void insert(int&& x, AvlNode * & t);
 	void remove(const int& x, AvlNode * & t);
-	
+
+	int numNodes(AvlNode * t, int * num);
+	int numLeaves(AvlNode * t, int * num);
+	int numFullNodes(AvlNode * t, int * num);
+
 	static const int ALLOWED_IMBALANCE = 1;
 
 	// Assume t is balanced or within one of being balanced

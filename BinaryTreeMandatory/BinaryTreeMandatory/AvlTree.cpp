@@ -236,3 +236,81 @@ void AvlTree::doubleWithRightChild(AvlNode * & k1)
 	rotateWithLeftChild(k1->right);
 	rotateWithRightChild(k1);
 }
+
+int AvlTree::numNodes()
+{
+	int num = 0;
+	return numNodes(root, &num);
+}
+
+int AvlTree::numNodes(AvlNode* t, int * num)
+{
+
+	if (t != nullptr)
+	{
+		//not null so element exsists, thus increment
+		++*num;
+
+		// left first
+		numNodes(t->left, num);
+
+		//then right
+		numNodes(t->right, num);
+
+		return *num;
+	}
+}
+
+int AvlTree::numLeaves()
+{
+	int num = 0;
+	return numLeaves(root, &num);
+}
+
+int AvlTree::numLeaves(AvlNode* t, int * num)
+{
+
+	if (t != nullptr)
+	{
+		//if both left and right is null, node is a leave
+		if (t->left == nullptr && t->right == nullptr)
+		{
+			++*num;
+		}
+
+		// left first
+		numLeaves(t->left, num);
+
+		//then right
+		numLeaves(t->right, num);
+
+		return *num;
+	}
+}
+
+int AvlTree::numFullNodes()
+{
+	int num = 0;
+	return numFullNodes(root, &num);
+}
+
+int AvlTree::numFullNodes(AvlNode* t, int * num)
+{
+
+	if (t != nullptr)
+	{
+		//if both left and right is not null, node is a full-Node
+		if (t->left != nullptr && t->right != nullptr)
+		{
+			++*num;
+		}
+
+		// left first
+		numFullNodes(t->left, num);
+
+		//then right
+		numFullNodes(t->right, num);
+
+		return *num;
+	}
+}
