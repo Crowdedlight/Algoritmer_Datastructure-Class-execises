@@ -313,4 +313,139 @@ int AvlTree::numFullNodes(AvlNode* t, int * num)
 
 		return *num;
 	}
+
+
 }
+
+void AvlTree::preOrderTrans()
+{
+	preOrderTrans(root, 0);
+}
+
+void AvlTree::preOrderTrans(AvlNode*& t, int height)
+{
+	//Print current node before childs
+	if (t != nullptr)
+	{
+		string indent = "";
+
+		for (int i = 0; i < height; i++)
+			indent += "   ";
+
+		cout << indent << t->element << endl;
+
+		height++;
+
+		// left first
+		preOrderTrans(t->left, height);
+
+		//then right
+		preOrderTrans(t->right, height);
+
+	}
+}
+
+void AvlTree::postOrderTrans()
+{
+	postOrderTrans(root, 0);
+}
+
+void AvlTree::postOrderTrans(AvlNode*& t, int height)
+{
+	//Print current node before childs
+	if (t != nullptr)
+	{
+
+		string indent = "";
+
+		for (int i = 0; i < height; i++)
+			indent += "   ";
+
+		height++;
+
+		// left first
+		postOrderTrans(t->left, height);
+
+		//then right
+		postOrderTrans(t->right, height);
+
+		//Then print & go back up stack
+		cout << indent << t->element << endl;
+	}
+}
+
+void AvlTree::inOrderTrans()
+{
+	inOrderTrans(root);
+}
+
+void AvlTree::inOrderTrans(AvlNode*& t)
+{
+	//Print current node before childs
+	if (t != nullptr)
+	{
+		// left first
+		inOrderTrans(t->left);
+
+		//Then print
+		cout << t->element << endl;
+
+		//then right
+		inOrderTrans(t->right);
+	}
+}
+
+void AvlTree::levelOrderTrans()
+{
+	//Make queue
+	list<node> printList;
+
+	//Transverse though tree and add to list
+	levelOrderTrans(root, &printList, 0);
+
+	//sort queue, smallest level first
+	printList.sort(sortNode);
+
+	//Print queue
+	cout << "size: " << printList.size() << endl;
+
+	while(!printList.empty())
+	{
+		node curr = printList.front();
+		cout << curr.level << "," << curr.element << endl;
+		printList.pop_front();
+	}
+}
+
+void AvlTree::levelOrderTrans(AvlNode*& t, list<node>* printList, int height)
+{
+	if (t != nullptr)
+	{
+
+		node currNode;
+
+		currNode.level = height;
+		currNode.element = t->element;
+
+		printList->push_back(currNode);
+
+		height++;
+
+		// left first
+		levelOrderTrans(t->left, printList, height);
+
+		//then right
+		levelOrderTrans(t->right, printList, height);
+	}
+
+}
+
+	bool AvlTree::sortNode(const node& first, const node& second)
+{
+	if (first.level < second.level) return true;
+	else if (first.level > second.level) return false;
+
+	return false;
+}
+
+

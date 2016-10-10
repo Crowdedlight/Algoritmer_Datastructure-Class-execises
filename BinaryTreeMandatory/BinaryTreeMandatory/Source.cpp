@@ -20,13 +20,13 @@ int main()
 	AvlTree avl = AvlTree();
 
 	//Add values
-	for (int i = 0; i < 15; i++)
+	for (int i = 0; i < 16; i++)
 	{
 		bst.insert(i);
 		avl.insert(i);
 	}
 
-	system("pause");
+//	system("pause");
 
 	cout << "=============================" << endl;
 	cout << "======= PRINTING TREE =======" << endl;
@@ -36,7 +36,7 @@ int main()
 	avl.printTree();
 	cout << endl;
 
-	system("pause");
+//	system("pause");
 
 #pragma region NodesTest
 
@@ -58,7 +58,7 @@ int main()
 
 	cout << "Function took: " << diff.count() << "ms" << endl;
 
-	system("pause");
+//	system("pause");
 #pragma endregion 
 	
 #pragma region LeavesTest
@@ -82,7 +82,7 @@ int main()
 
 	cout << "Function took: " << diff.count() << "ms" << endl;
 
-	system("pause");
+//	system("pause");
 
 #pragma endregion 
 
@@ -106,9 +106,39 @@ int main()
 
 	cout << "Function took: " << diff.count() << "ms" << endl;
 
-	system("pause");
 
 #pragma endregion 
 
+#pragma region Transverse
+
+	cout << "=============================" << endl;
+	cout << "==== PREORDER TRANSVERSAL ===" << endl;
+	cout << "=============================" << endl;
+
+	avl.preOrderTrans();
+
+	cout << "=============================" << endl;
+	cout << "=== POSTORDER TRANSVERSAL ===" << endl;
+	cout << "=============================" << endl;
+
+	avl.postOrderTrans();
+
+	cout << "=============================" << endl;
+	cout << "==== INORDER TRANSVERSAL ====" << endl;
+	cout << "=============================" << endl;
+
+	avl.inOrderTrans();
+
+	cout << "=============================" << endl;
+	cout << "=== LEVELORDER TRANSVERSAL ==" << endl;
+	cout << "=============================" << endl;
+
+	avl.levelOrderTrans();
+
+#pragma endregion 
+
+
+
+	system("pause");
 	return 0;
 }

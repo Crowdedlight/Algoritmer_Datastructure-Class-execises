@@ -2,7 +2,17 @@
 #define AVL_TREE_H
 #include <algorithm>
 #include <iostream> 
+#include <list>
+#include <string>
 using namespace std;
+
+//Used for levelOrderTransversal
+struct node
+{
+	int level;
+	int element;
+};
+
 class AvlNode
 {
 public:
@@ -38,6 +48,12 @@ public:
 	void insert(int&& x);
 	void remove(const int& x);
 
+	//Transversal
+	void preOrderTrans();
+	void postOrderTrans();
+	void inOrderTrans();
+	void levelOrderTrans();
+
 	int numNodes();
 	int numLeaves();
 	int numFullNodes();
@@ -53,6 +69,16 @@ private:
 	int numNodes(AvlNode * t, int * num);
 	int numLeaves(AvlNode * t, int * num);
 	int numFullNodes(AvlNode * t, int * num);
+
+	//Transversal
+	void preOrderTrans(AvlNode * & t, int Height);
+	void postOrderTrans(AvlNode * & t, int height);
+	void inOrderTrans(AvlNode * & t);
+	void levelOrderTrans(AvlNode * & t, list<node>* printQueue, int height);
+
+	//sort Comperator - used in level order transversal
+	static bool sortNode(const node& first, const node& second);
+
 
 	static const int ALLOWED_IMBALANCE = 1;
 
