@@ -1,5 +1,4 @@
 #pragma once
-#include "BinarySearchTree.h"
 #include "AvlTree.h"
 #include <iostream>
 #include <chrono>
@@ -16,13 +15,11 @@ int main()
 {
 	
 	//Make a binary search tree
-	BinarySearchTree bst = BinarySearchTree();
 	AvlTree avl = AvlTree();
 
 	//Add values
 	for (int i = 0; i < 16; i++)
 	{
-		bst.insert(i);
 		avl.insert(i);
 	}
 
@@ -32,11 +29,13 @@ int main()
 	cout << "======= PRINTING TREE =======" << endl;
 	cout << "=============================" << endl;
 
-	//bst.printTree();
 	avl.printTree();
 	cout << endl;
 
 //	system("pause");
+
+	// All the functions with finding nodes and leaves is running
+	// with O(n) time, as we visit each node once.
 
 #pragma region NodesTest
 
@@ -48,7 +47,6 @@ int main()
 	time_point<Clock> start = Clock::now();
 
 	//Run function
-	//cout << bst.numNodes() << endl;
 	cout << avl.numNodes() << endl;
 
 
@@ -71,7 +69,6 @@ int main()
 	start = Clock::now();
 
 	//Running function
-	//cout << bst.numLeaves() << endl;
 	cout << avl.numLeaves() << endl;
 
 	
@@ -96,7 +93,6 @@ int main()
 	start = Clock::now();
 
 	//Running function
-	//cout << bst.numFullNodes() << endl;
 	cout << avl.numFullNodes() << endl;
 
 	// Stop Clock
@@ -133,6 +129,9 @@ int main()
 	cout << "=== LEVELORDER TRANSVERSAL ==" << endl;
 	cout << "=============================" << endl;
 
+	cout << endl;
+	cout << "Level,Value" << endl;
+	cout << "------------------" << endl;
 	avl.levelOrderTrans();
 
 #pragma endregion 
