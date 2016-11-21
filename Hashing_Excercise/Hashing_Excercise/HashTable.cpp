@@ -30,7 +30,7 @@ int HashTable::findPos(string key)
 	}
 
 	return currentPos;
-}
+
 
 int HashTable::myHash(string key)
 {
