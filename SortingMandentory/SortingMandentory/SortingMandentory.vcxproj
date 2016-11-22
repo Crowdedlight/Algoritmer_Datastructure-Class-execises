@@ -146,9 +146,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Line.h" />
+    <ClInclude Include="point.h" />
     <ClInclude Include="Sorting.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Line.cpp" />
+    <ClCompile Include="point.cpp" />
     <ClCompile Include="Sorting.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
