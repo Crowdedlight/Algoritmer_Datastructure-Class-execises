@@ -138,10 +138,10 @@ int main()
     cout << "------------------------------------" << endl;
 
     vector<Point> samples3;
-    for (int i = 0; i<1000; i++)
+    for (int i = 0; i<300; i++)
     {
-        int x = rd() % 100;
-        int y = rd() % 100;
+        int x = rd() % 200;
+        int y = rd() % 200;
         Point newP(x, y);
         samples3.push_back(newP);
     }
