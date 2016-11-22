@@ -136,9 +136,7 @@ vector<Line> Sorting::findLinesBySortAndSlope()
 
         //All slopes have been calculated, now check if lines exists by sorting 
         sortPoints();
-
-        //Can now go though and check if lines exist with more than 4 points
-        
+       
         //loop, while they have equal slope, add them to line object. 
         //When new slope appears, count objects on line vector. if > 4, save line, else discard line.        
         Line newL;

@@ -137,6 +137,8 @@ int main()
     cout << "------------- Task 7.38 ------------" << endl;
     cout << "------------------------------------" << endl;
 
+    cout << endl << "Creating sample plane. (200,200) grid with 300 random points" << endl;
+
     vector<Point> samples3;
     for (int i = 0; i<300; i++)
     {
