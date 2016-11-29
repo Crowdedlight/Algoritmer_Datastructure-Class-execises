@@ -1,18 +1,31 @@
 #pragma once
 #include <vector>
-
+#include <string>
 using namespace std;
 
-template <class T>
+struct Edge
+{
+	int dest; //index in graph vector
+	int weight; //cost 
+
+	Edge(int dest, int weight)
+	{
+		this->dest = dest;
+		this->weight = weight;
+	}
+};
+
 class Vertex
 {
 public:
-    Vertex(T data, int weight = 0);
+    Vertex(string data);
+	string getData();
+	void addEdge(Edge newE);
+	vector<Edge> getEdges();
     ~Vertex();
 
 private:
-     T data;
-     vector<Vertex*> adjVertex;
-     int weight;
+     string data;
+	 vector<Edge> adjVertex;
 };
 

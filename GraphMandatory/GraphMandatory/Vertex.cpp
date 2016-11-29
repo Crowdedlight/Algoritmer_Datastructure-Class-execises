@@ -1,14 +1,29 @@
 #include "Vertex.h"
 
 
-template <class T>
-Vertex::Vertex(T data, int weight = 0)
+Vertex::Vertex(string data)
 {
-    this.data = data;
-    this.weight = weight;
+    this->data = data;
 }
 
-template <class T>
+string Vertex::getData()
+{
+	return data;
+}
+
+void Vertex::addEdge(Edge newE)
+{
+	adjVertex.push_back(newE);
+}
+
+vector<Edge> Vertex::getEdges()
+{
+	return adjVertex;
+}
+
+
+
+
 Vertex::~Vertex()
 {
 }
