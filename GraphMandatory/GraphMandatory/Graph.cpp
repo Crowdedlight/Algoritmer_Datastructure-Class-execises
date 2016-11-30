@@ -47,7 +47,7 @@ void Graph::print()
 		cout << "Vertex: " << i.getData() << "    Have Edges (dest,cost): ";
 		for(auto j : i.getEdges())
 		{
-			cout << "(" << j.dest << "," << j.weight << ")";
+			cout << "(" << graphContainer[j.dest].getData() << "," << j.weight << ")";
 			cout << " ";
 		}
 		cout << endl;
