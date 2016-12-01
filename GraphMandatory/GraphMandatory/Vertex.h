@@ -22,10 +22,17 @@ public:
 	string getData();
 	void addEdge(Edge newE);
 	vector<Edge> getEdges();
+    int getIndegree();
+    void setTopNum(int num);
+    void incrementIndegree();
+    void decrementIndegree();
+    bool hasVertexAdj(int v);
     ~Vertex();
 
 private:
-     string data;
-	 vector<Edge> adjVertex;
+    int topNum;
+    int indegree;
+    string data;
+	vector<Edge> adjVertex;
 };
 

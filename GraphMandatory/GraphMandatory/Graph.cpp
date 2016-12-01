@@ -35,9 +35,62 @@ void Graph::addEdge(string from, string to, int weight)
 	}
 
 	Edge newE(target, weight);
+    graphContainer[target].incrementIndegree();
 
 	graphContainer[source].addEdge(newE);
 
+}
+
+void Graph::topologicalSort()
+{    
+    for (int i = 0; i < graphContainer.size(); i++)
+    {
+        int zeroV = -1;
+        //find indegree 0
+        for (int j = 0; j < graphContainer.size(); j++)
+        {
+            if (graphContainer[j].getIndegree() == 0)
+            {
+                zeroV = j;
+                break;
+            }
+        }
+
+        //if cycles
+        if (zeroV == -1)
+        {
+            cout << "ERROR: Cycle found." << endl;
+            break;
+        }
+
+        graphContainer[zeroV].setTopNum(i);
+
+        //each vertex that got zeroV in adj, indgree--;
+        for (auto v : graphContainer)
+        {
+            if (v.hasVertexAdj(zeroV))
+                v.decrementIndegree();
+        }         
+    }
+}
+
+vector<Vertex> Graph::sortSmallestFirst(vector<Vertex> items)
+{
+    make_heap(items.begin(), items.end(), smallestIndegree());
+    sort_heap(items.begin(), items.end(), smallestIndegree());
+
+    return items;
+}
+
+void Graph::printTopSort()
+{
+    vector<Vertex> temp = sortSmallestFirst(graphContainer);
+
+    for (auto i : temp)
+    {
+        cout << i.getData() << ",";
+    }
+    cout << endl;
 }
 
 void Graph::print()
@@ -53,9 +106,6 @@ void Graph::print()
 		cout << endl;
 	}
 }
-
-
-
 
 Graph::~Graph()
 {
