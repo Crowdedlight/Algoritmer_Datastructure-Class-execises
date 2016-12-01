@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <queue>
 
 #define INFINITY 5000000
 
@@ -32,9 +33,9 @@ private:
 	string name;
 };
 
-struct smallestIndegree {
+struct smallestTopNum {
     bool operator()( Vertex& fP, Vertex& sP) const {
-        return fP.getIndegree() < sP.getIndegree();
+        return fP.getTopNum() < sP.getTopNum();
     }
 };
 

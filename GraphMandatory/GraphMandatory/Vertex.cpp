@@ -40,14 +40,9 @@ int Vertex::smallestAdjVertex()
     return dest;
 }
 
-bool Vertex::hasVertexAdj(int v)
+int Vertex::getTopNum()
 {
-    for (auto i : adjVertex)
-    {
-        if (i.dest == v)
-            return true;
-    }
-    return false;
+    return topNum;
 }
 
 vector<Edge> Vertex::getEdges()

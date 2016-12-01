@@ -43,41 +43,38 @@ void Graph::addEdge(string from, string to, int weight)
 
 void Graph::topologicalSort()
 {    
+    queue<int> queue;
+    int counter = 0;
+
     for (int i = 0; i < graphContainer.size(); i++)
     {
-        int zeroV = -1;
-        //find indegree 0
-        for (int j = 0; j < graphContainer.size(); j++)
-        {
-            if (graphContainer[j].getIndegree() == 0)
-            {
-                zeroV = j;
-                break;
-            }
-        }
+        if (graphContainer[i].getIndegree() == 0)
+            queue.push(i);
+    }
 
-        //if cycles
-        if (zeroV == -1)
-        {
-            cout << "ERROR: Cycle found." << endl;
-break;
-        }
+    while (!queue.empty())
+    {
+        Vertex* v = &graphContainer[queue.front()];
+        queue.pop();
 
-        graphContainer[zeroV].setTopNum(i);
+        v->setTopNum(counter++);
 
-        //each vertex that got zeroV in adj, indgree--;
-        for (auto v : graphContainer)
+        //decrement all vertex this points too
+        for (auto adjV : v->getEdges())
         {
-            if (v.hasVertexAdj(zeroV))
-                v.decrementIndegree();
+            graphContainer[adjV.dest].decrementIndegree();
+
+            //if next element is indegree 0 push on queue
+            if (graphContainer[adjV.dest].getIndegree() == 0)
+                queue.push(adjV.dest);
         }
     }
 }
 
 vector<Vertex> Graph::sortSmallestFirst(vector<Vertex> items)
 {
-    make_heap(items.begin(), items.end(), smallestIndegree());
-    sort_heap(items.begin(), items.end(), smallestIndegree());
+    make_heap(items.begin(), items.end(), smallestTopNum());
+    sort_heap(items.begin(), items.end(), smallestTopNum());
 
     return items;
 }

@@ -32,7 +32,7 @@ int main()
     graf.topologicalSort();
     graf.printTopSort();
 
-    cout << "DJIkstra:" << endl;
+    cout << endl << "DJIkstra:" << endl;
 
     graf.dijkstra("V0");
     graf.printShortestPath("V5");

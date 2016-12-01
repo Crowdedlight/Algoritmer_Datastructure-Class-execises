@@ -24,10 +24,10 @@ public:
 	vector<Edge> getEdges();
     int getIndegree();
     void setTopNum(int num);
+    int getTopNum();
     void incrementIndegree();
     void decrementIndegree();
     int smallestAdjVertex();
-    bool hasVertexAdj(int v);
     ~Vertex();
 
     //Attributes for djikstra
