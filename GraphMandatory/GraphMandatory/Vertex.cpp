@@ -27,6 +27,19 @@ void Vertex::decrementIndegree()
     indegree--;
 }
 
+int Vertex::smallestAdjVertex()
+{
+    int dest = adjVertex[0].dest;
+    for (auto i : adjVertex)
+    {
+        static int cost = i.weight;
+
+        if (i.weight < cost)
+            dest = i.dest;
+    }
+    return dest;
+}
+
 bool Vertex::hasVertexAdj(int v)
 {
     for (auto i : adjVertex)

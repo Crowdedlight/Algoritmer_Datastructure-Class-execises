@@ -5,6 +5,8 @@
 #include <string>
 #include <algorithm>
 
+#define INFINITY 5000000
+
 using namespace std;
 
 class Graph
@@ -17,10 +19,15 @@ public:
 	void print();
     void printTopSort();
     void topologicalSort();
+    void dijkstra(string s);
+    void printShortestPath(string target);
+    int getVertexByData(string data);
     ~Graph();
 
 private:
     vector<Vertex> sortSmallestFirst(vector<Vertex> items);
+    int smallestUnknownVertex();
+    bool unknownDistVertex();
     vector<Vertex> graphContainer;
 	string name;
 };

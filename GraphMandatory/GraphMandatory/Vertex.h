@@ -26,9 +26,14 @@ public:
     void setTopNum(int num);
     void incrementIndegree();
     void decrementIndegree();
+    int smallestAdjVertex();
     bool hasVertexAdj(int v);
     ~Vertex();
 
+    //Attributes for djikstra
+    bool known;
+    int dist;
+    Vertex* path;
 private:
     int topNum;
     int indegree;

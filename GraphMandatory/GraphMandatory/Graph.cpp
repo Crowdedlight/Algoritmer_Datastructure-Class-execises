@@ -60,7 +60,7 @@ void Graph::topologicalSort()
         if (zeroV == -1)
         {
             cout << "ERROR: Cycle found." << endl;
-            break;
+break;
         }
 
         graphContainer[zeroV].setTopNum(i);
@@ -70,7 +70,7 @@ void Graph::topologicalSort()
         {
             if (v.hasVertexAdj(zeroV))
                 v.decrementIndegree();
-        }         
+        }
     }
 }
 
@@ -95,16 +95,104 @@ void Graph::printTopSort()
 
 void Graph::print()
 {
-	for (auto i : graphContainer)
-	{
-		cout << "Vertex: " << i.getData() << "    Have Edges (dest,cost): ";
-		for(auto j : i.getEdges())
-		{
-			cout << "(" << graphContainer[j.dest].getData() << "," << j.weight << ")";
-			cout << " ";
-		}
-		cout << endl;
-	}
+    for (auto i : graphContainer)
+    {
+        cout << "Vertex: " << i.getData() << "    Have Edges (dest,cost): ";
+        for (auto j : i.getEdges())
+        {
+            cout << "(" << graphContainer[j.dest].getData() << "," << j.weight << ")";
+            cout << " ";
+        }
+        cout << endl;
+    }
+}
+
+int Graph::getVertexByData(string data)
+{
+    for (int v = 0; v < graphContainer.size(); v++)
+    {
+        if (graphContainer[v].getData() == data)
+            return v;
+    }
+}
+
+void Graph::dijkstra(string vertex)
+{
+    //set info for each vertex
+    for (int v = 0; v < graphContainer.size(); v++)
+    {
+        graphContainer[v].known = false;
+        graphContainer[v].dist = INFINITY;
+    }
+
+    Vertex* s = &graphContainer[getVertexByData(vertex)];
+    s->dist = 0;
+
+    while (unknownDistVertex())
+    {
+        //find smallest edge
+        int index = smallestUnknownVertex();
+        Vertex* sV = &graphContainer[index];
+        sV->known = true;
+
+        for (auto edge : sV->getEdges())
+        {
+            Vertex* target = &graphContainer[edge.dest];
+            if (!target->known)
+            {
+                //cost from sV to edge.dest                
+                int cvw = edge.weight;
+
+                if (sV->dist + cvw < target->dist)
+                {
+                    //update dist 
+                    target->dist = sV->dist + cvw;
+                    target->path = sV;
+                }
+            }
+        }
+    }
+}
+
+int Graph::smallestUnknownVertex()
+{
+    int smallest = INFINITY; //large amount for init. Has to be larger than any cost that can occur
+    int cost = INFINITY;
+    for (int i = 0; i < graphContainer.size(); i++)
+    {
+        Vertex v = graphContainer[i];
+        if (!v.known && v.dist != INFINITY)
+        {
+            if (v.dist < cost)
+            {
+                cost = v.dist;
+                smallest = i;
+            }
+        }
+    }
+
+    return smallest;
+}
+
+void Graph::printShortestPath(string vertex)
+{
+    Vertex target = graphContainer[getVertexByData(vertex)];
+    if (target.path != nullptr)
+    {
+        printShortestPath(target.path->getData());
+        cout << " to ";
+    }
+    cout << target.getData();
+}
+
+bool Graph::unknownDistVertex()
+{
+    for (auto i : graphContainer)
+    {
+        if (i.known == false)
+            return true;
+    }
+    return false;
 }
 
 Graph::~Graph()

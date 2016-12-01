@@ -10,7 +10,9 @@ int main()
 	//Directed graf, addEdge only adds to source adjList
 	Graph graf("MyGraph");
 
-	graf.addVertex("V0");
+    Vertex V0("V0");
+
+	graf.addVertex(V0);
 	graf.addVertex("V1");
 	graf.addVertex("V2");
 	graf.addVertex("V3");
@@ -29,6 +31,15 @@ int main()
 
     graf.topologicalSort();
     graf.printTopSort();
+
+    cout << "DJIkstra:" << endl;
+
+    graf.dijkstra("V0");
+    graf.printShortestPath("V5");
+    cout << endl;
+
+    graf.printShortestPath("V4");
+    cout << endl;
 
 
     system("pause");
