@@ -130,7 +130,7 @@ int main()
 	cout << "=============================" << endl;
 
 	cout << endl;
-	cout << "Level,Value" << endl;
+	cout << "Value" << endl;
 	cout << "------------------" << endl;
 	avl.levelOrderTrans();
 

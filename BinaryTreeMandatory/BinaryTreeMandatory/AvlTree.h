@@ -4,6 +4,7 @@
 #include <iostream> 
 #include <list>
 #include <string>
+#include <queue>
 using namespace std;
 
 //Used for levelOrderTransversal
@@ -74,7 +75,7 @@ private:
 	void preOrderTrans(AvlNode * & t, int Height);
 	void postOrderTrans(AvlNode * & t, int height);
 	void inOrderTrans(AvlNode * & t);
-	void levelOrderTrans(AvlNode * & t, list<node>* printQueue, int height);
+	void levelOrderTrans(AvlNode * & t);
 
 	//sort Comperator - used in level order transversal
 	static bool sortNode(const node& first, const node& second);

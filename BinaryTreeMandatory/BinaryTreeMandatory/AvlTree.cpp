@@ -397,47 +397,45 @@ void AvlTree::inOrderTrans(AvlNode*& t)
 
 void AvlTree::levelOrderTrans()
 {
-	//Make queue
-	list<node> printList;
-
-	//Transverse though tree and add to list
-	levelOrderTrans(root, &printList, 0);
-
-	//sort queue, smallest level first
-	printList.sort(sortNode);
-
-	//Print queue
-	cout << "size: " << printList.size() << endl;
-
-	while(!printList.empty())
-	{
-		node curr = printList.front();
-		cout << curr.level << "," << curr.element << endl;
-		printList.pop_front();
-	}
+    levelOrderTrans(root);
 }
 
-void AvlTree::levelOrderTrans(AvlNode*& t, list<node>* printList, int height)
+void AvlTree::levelOrderTrans(AvlNode*& t)
 {
-	if (t != nullptr)
-	{
+    //if root doesn't exists terminate
+    if (t == nullptr)
+    {
+        cout << "Root doesn't exists" << endl;
+        return;
+    }
 
-		node currNode;
+    queue<AvlNode*> queue;
 
-		currNode.level = height;
-		currNode.element = t->element;
+    //push next lvl if they exists
+    if (t->left != nullptr)
+        queue.push(t->left);
 
-		printList->push_back(currNode);
+    if (t->right != nullptr)
+        queue.push(t->right);
 
-		height++;
+    //cout root element
+    cout << t->element << endl;
 
-		// left first
-		levelOrderTrans(t->left, printList, height);
+    //Keep going until queue is empty and all elements have been visited
+    while (!queue.empty())
+    {
+        auto temp = queue.front();
+        queue.pop();
 
-		//then right
-		levelOrderTrans(t->right, printList, height);
-	}
+        cout << temp->element << endl;
 
+        //push next lvl if they exists
+        if (temp->left != nullptr)
+            queue.push(temp->left);
+
+        if (temp->right != nullptr)
+            queue.push(temp->right);
+    }
 }
 
 	bool AvlTree::sortNode(const node& first, const node& second)
