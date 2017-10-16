@@ -39,7 +39,6 @@ int main()
 	//Calculated value
 	int cal = log(10007)/(log(log(10007)));
 	cout << "Calculted average per bin: " << cal << endl << endl;
-
 	system("pause");
 
 #pragma endregion 

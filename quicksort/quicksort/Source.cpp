@@ -19,14 +19,15 @@ int main()
     time_point<Clock> end;
     milliseconds diff;
 
+    random_device rd;
 
     QuickSort sort;
 
     vector<int> samples;
 
-    for (auto i = 0; i < 20000; i++)
+    for (auto i = 0; i < 50000; i++)
     {
-        int tmp = rand() % 5000;
+        int tmp = rd() % 10000;
         samples.push_back(tmp);
     }
 
@@ -34,7 +35,7 @@ int main()
     cout << "---------------------------------------" << endl;
     cout << "----------- UNSORTED ARRAY ------------" << endl;
     cout << "---------------------------------------" << endl;
-    sort.print(samples);
+    //sort.print(samples);
 
 
     cout << "---------------------------------------" << endl;
@@ -54,7 +55,7 @@ int main()
     cout << "------------ SORTED ARRAY -------------" << endl;
     cout << "---------------------------------------" << endl;
 
-    sort.print(samples);
+    //sort.print(samples);
 
     system("pause");
 }

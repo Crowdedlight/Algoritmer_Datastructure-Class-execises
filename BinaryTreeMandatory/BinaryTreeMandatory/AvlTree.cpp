@@ -438,6 +438,25 @@ void AvlTree::levelOrderTrans(AvlNode*& t)
     }
 }
 
+int AvlTree::IPL() {
+    return IPL(root, 0);
+}
+
+int AvlTree::IPL(AvlNode *t, int num) {
+    if (t != nullptr)
+    {
+        return IPL(t->left, num + 1) + IPL(t->right, num + 1) + num;
+    }
+    else
+    {
+        return 0;
+    }
+
+    return num;
+}
+
+
+
 	bool AvlTree::sortNode(const node& first, const node& second)
 {
 	if (first.level < second.level) return true;

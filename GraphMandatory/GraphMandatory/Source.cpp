@@ -34,10 +34,14 @@ int main()
 
     cout << endl << "DJIkstra:" << endl;
 
+    cout << "Running with 'V0' as root" << endl;
     graf.dijkstra("V0");
+
+    cout << "shortest path to 'V5'" << endl;
     graf.printShortestPath("V5");
     cout << endl;
 
+    cout << "shortest path to 'V4'" << endl;
     graf.printShortestPath("V4");
     cout << endl;
 

@@ -59,6 +59,9 @@ public:
 	int numLeaves();
 	int numFullNodes();
 
+    int IPL();
+    int IPL(AvlNode *t, int num);
+
 private:
 	
 	AvlNode *root;
